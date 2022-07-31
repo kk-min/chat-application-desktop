@@ -1,15 +1,21 @@
-package com.Min.View;
+package com.Min.Controller;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 public class Main extends Application{
+    @FXML
     Button sendButton;
+    Label textLabel;
 
     public static void main(String[] args){
         launch(args);
@@ -18,19 +24,10 @@ public class Main extends Application{
     @Override
     public void start(Stage mainStage) throws Exception {
         mainStage.setTitle("Rfc865");
-
-        sendButton = new Button("Connect");
-        sendButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-            
-            }
-        });
-
-        StackPane layout = new StackPane();
-        layout.getChildren().add(sendButton);
-
-        Scene mainScene = new Scene(layout, 300, 250);
+        sendButton = new Button();
+        textLabel = new Label();
+        Parent root = FXMLLoader.load(getClass().getResource("/UIMain.fxml"));
+        Scene mainScene = new Scene(root);
         mainStage.setScene(mainScene);
         mainStage.show();
     }
