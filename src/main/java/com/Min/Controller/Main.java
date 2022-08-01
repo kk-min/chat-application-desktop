@@ -40,6 +40,7 @@ public class Main extends Application{
         Scene startScene = new Scene(startScreenLoader.load());
         startScreenController = startScreenLoader.getController();
         startScreenController.initModel(dataModel);
+        startScreenController.initNetworkManager(networkManager);
 
         window = mainStage;
         window.setTitle("Rfc865");

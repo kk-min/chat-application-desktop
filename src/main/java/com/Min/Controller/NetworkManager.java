@@ -7,14 +7,17 @@ import java.util.concurrent.CompletableFuture;
 public class NetworkManager {
     String myIP;
     String serverIP;
-
     DatagramSocket clientSocket;
+
     public NetworkManager() throws UnknownHostException {
         myIP = InetAddress.getLocalHost().toString();
         try{
-            clientSocket = new DatagramSocket(18);
-            clientSocket.setSoTimeout(15);
-        }        catch(SocketException ignored){}
+            clientSocket = new DatagramSocket(11064);
+            clientSocket.setSoTimeout(10*1000);
+        }        catch(SocketException e){
+            System.out.println("Failed to create socket!");
+            e.printStackTrace();
+        }
     }
 
     public String getMyIP() {
@@ -36,8 +39,10 @@ public class NetworkManager {
     public void connect() throws Exception{
         // Send a message to server to establish TCP Connection:
         try{
-                sendRequest( "A");
+            sendRequest("A");
         } catch (Exception e) {
+            System.out.println("Connection failed in NetworkManager");
+            e.printStackTrace();
             throw e;
         }
     }

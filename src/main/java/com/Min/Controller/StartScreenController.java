@@ -27,7 +27,6 @@ public class StartScreenController{
     @FXML
     public void initialize() throws Exception {
         System.out.println("initialize method of StartScreenController");
-        networkManager = new NetworkManager();
     }
 
     @FXML
@@ -35,12 +34,14 @@ public class StartScreenController{
         FXMLLoader loadingScreenLoader =
                 new FXMLLoader(getClass().getResource("/LoadingScreen.fxml"));
         Scene loadingScene = new Scene(loadingScreenLoader.load());
-        //this.window = (Stage)((Node)event.getSource()).getScene().getWindow();
         this.window = dataModel.getWindow();
         this.window.setScene(loadingScene);
+
         loadingScreenController = loadingScreenLoader.getController();
         loadingScreenController.initNetworkManager(networkManager); // Inject network manager into Controller
         loadingScreenController.initModel(dataModel); // Inject data model into Controller
+        loadingScreenController.startConnection();
+
         System.out.println("Text in field: "+ ipField.getText());
         dataModel.setTargetIP(ipField.getText());
     }
@@ -51,5 +52,12 @@ public class StartScreenController{
         }
         this.dataModel = model ;
         this.dataModel.setCurrentScene("StartScreen");
+    }
+
+    public void initNetworkManager(NetworkManager nManager){
+        if(this.networkManager != null){
+            throw new IllegalStateException("Network Manager can only be initialized once");
+        }
+        this.networkManager = nManager;
     }
 }
