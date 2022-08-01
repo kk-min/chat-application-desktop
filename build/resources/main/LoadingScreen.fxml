@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.Min.Controller.LoadingScreenController">
+   <children>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="277.0" layoutY="152.0" text="Loading..." />
+      <ProgressIndicator layoutX="276.0" layoutY="182.0" />
+   </children>
+</AnchorPane>
