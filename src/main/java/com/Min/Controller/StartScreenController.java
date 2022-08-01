@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 
 public class StartScreenController{
@@ -26,7 +27,12 @@ public class StartScreenController{
 
     @FXML
     public void initialize() throws Exception {
-        System.out.println("initialize method of StartScreenController");
+        ipField.setOnKeyPressed(event -> {
+                    if (event.getCode().equals(KeyCode.ENTER)) {
+                        connectButton.fire();
+                    }
+                }
+        );
     }
 
     @FXML
