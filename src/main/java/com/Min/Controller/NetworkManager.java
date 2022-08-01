@@ -33,14 +33,13 @@ public class NetworkManager {
         this.serverIP = ip;
     }
 
-    public boolean connect(){
+    public void connect() throws Exception{
         // Send a message to server to establish TCP Connection:
         try{
                 sendRequest( "A");
         } catch (Exception e) {
-                return false;
+            throw e;
         }
-        return true; // Connection successful
     }
 
     public boolean receive() throws IOException {

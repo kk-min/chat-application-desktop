@@ -2,15 +2,16 @@ package com.Min.Controller;
 
 import com.Min.Model.DataModel;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+
+import java.io.IOException;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
 
 public class Main extends Application{
     @FXML
@@ -22,8 +23,8 @@ public class Main extends Application{
     Stage window;
     NetworkManager networkManager;
 
-    LoadingScreenController loadingScreenController;
     StartScreenController startScreenController;
+    ConnectionFailedController connectionFailedController;
 
     public static void main(String[] args){
         launch(args);
@@ -40,15 +41,9 @@ public class Main extends Application{
         startScreenController = startScreenLoader.getController();
         startScreenController.initModel(dataModel);
 
-        FXMLLoader loadingScreenLoader = new FXMLLoader(getClass().getResource("/LoadingScreen.fxml"));
-        Scene loadingScene = new Scene(loadingScreenLoader.load());
-        loadingScreenController = loadingScreenLoader.getController();
-        loadingScreenController.initModel(dataModel); // Inject data model into Controller
-        loadingScreenController.initNetworkManager(networkManager); // Inject network manager into Controller
-
         window = mainStage;
         window.setTitle("Rfc865");
-
+        dataModel.setWindow(window);
         window.setScene(startScene);
         window.show();
     }

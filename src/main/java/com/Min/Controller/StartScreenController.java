@@ -12,7 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class StartScreenController extends Application {
+public class StartScreenController{
     @FXML
     Button connectButton;
     @FXML
@@ -24,33 +24,25 @@ public class StartScreenController extends Application {
 
     LoadingScreenController loadingScreenController;
 
-    public static void main(String[] args){
-        launch(args);
-    }
-
-    @Override
-    public void start(Stage mainStage) throws Exception {
-        System.out.println("Start method of StartScreenController");
-        window = mainStage;
-        Parent root = FXMLLoader.load(getClass().getResource("/StartScreen.fxml"));
-        Scene startScene = new Scene(root);
-        window.setScene(startScene);
-        window.show();
-    }
-
     @FXML
     public void initialize() throws Exception {
-        super.init();
         System.out.println("initialize method of StartScreenController");
+        networkManager = new NetworkManager();
     }
 
     @FXML
     public void handleConnect(ActionEvent event) throws Exception {
-        //dataModel.setTargetIP(ipField.getText());
-        Parent root = FXMLLoader.load(getClass().getResource("/LoadingScreen.fxml"));
-        window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        Scene newScene = new Scene(root);
-        window.setScene(newScene);
+        FXMLLoader loadingScreenLoader =
+                new FXMLLoader(getClass().getResource("/LoadingScreen.fxml"));
+        Scene loadingScene = new Scene(loadingScreenLoader.load());
+        //this.window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        this.window = dataModel.getWindow();
+        this.window.setScene(loadingScene);
+        loadingScreenController = loadingScreenLoader.getController();
+        loadingScreenController.initNetworkManager(networkManager); // Inject network manager into Controller
+        loadingScreenController.initModel(dataModel); // Inject data model into Controller
+        System.out.println("Text in field: "+ ipField.getText());
+        dataModel.setTargetIP(ipField.getText());
     }
 
     public void initModel(DataModel model){
@@ -58,5 +50,6 @@ public class StartScreenController extends Application {
             throw new IllegalStateException("Model can only be initialized once");
         }
         this.dataModel = model ;
+        this.dataModel.setCurrentScene("StartScreen");
     }
 }
