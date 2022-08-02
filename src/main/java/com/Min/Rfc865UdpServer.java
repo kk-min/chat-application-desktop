@@ -15,7 +15,7 @@ public class Rfc865UdpServer{
     static DatagramSocket serverSocket;
     static BufferedReader inputReader = new BufferedReader(new InputStreamReader(System.in));
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws UnknownHostException {
         //Open up UDP Socket at port 17 (QOTD Port):
         try {
             serverSocket = new DatagramSocket(17);
@@ -37,6 +37,7 @@ public class Rfc865UdpServer{
 
             while (true){
             //Send UDP reply to client:
+                System.out.println("My IP: "+InetAddress.getLocalHost().toString());
             System.out.print("\nEnter Message: ");
             String message = null;
             try {
