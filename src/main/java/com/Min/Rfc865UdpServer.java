@@ -14,6 +14,7 @@ import java.util.concurrent.*;
 public class Rfc865UdpServer{
     static DatagramSocket serverSocket;
     static BufferedReader inputReader = new BufferedReader(new InputStreamReader(System.in));
+    static String counterPartyName;
 
     public static void main(String[] args) throws UnknownHostException {
         //Open up UDP Socket at port 17 (QOTD Port):
@@ -27,6 +28,7 @@ public class Rfc865UdpServer{
                     DatagramPacket request = null;
                     try {
                         request = getRequest();
+                        counterPartyName = request.getAddress().getHostName();
                     String receivedMessage = new String(request.getData(), 0, request.getLength());
                         System.out.printf("\nMessage from client: %s\n", receivedMessage);
                     } catch (IOException e) {
@@ -58,7 +60,7 @@ public class Rfc865UdpServer{
 
     public static void sendReply(String message) throws UnknownHostException, IOException{
         byte[] byteEncodedMessage = message.getBytes(); // Encode our quote into byte array
-        InetAddress targetAddress = InetAddress.getByName("localhost"); // Get the address of whoever sent a request datagram packet to our server
+        InetAddress targetAddress = InetAddress.getByName(counterPartyName); // Get the address of whoever sent a request datagram packet to our server
 
         DatagramPacket reply = new DatagramPacket(byteEncodedMessage, byteEncodedMessage.length, targetAddress, 18);
         serverSocket.send(reply);
