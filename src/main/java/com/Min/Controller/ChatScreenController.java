@@ -57,16 +57,9 @@ public class ChatScreenController {
 
     @FXML
     public void onSend() throws IOException {
-        HBox hBox = new HBox();
         String message = chatBox.getText();
-        Label sentText = new Label();
-        sentText.setText(message);
-        sentText.setTextAlignment(TextAlignment.RIGHT);
-        //sentText.setPadding(new Insets(20));
-        hBox.getChildren().add(sentText);
-        hBox.setAlignment(Pos.BASELINE_RIGHT);
-        hBox.setPadding(new Insets(10,20,0,0));
-        chatContainer.getChildren().add(hBox);
+        ChatBubble chatBubble = new SentChatBubble(message);
+        chatContainer.getChildren().add(chatBubble);
         chatBox.clear();
         CompletableFuture.supplyAsync(() ->{
             try {
