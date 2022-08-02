@@ -83,6 +83,9 @@ public class ChatScreenController {
     @FXML
     public void onSend() throws IOException {
         String message = chatBox.getText();
+        if(message.equals("")){
+            return;
+        }
         ChatBubble chatBubble = new SentChatBubble(message);
         chatContainer.getChildren().add(chatBubble);
         chatBox.clear();

@@ -8,6 +8,7 @@ import java.net.SocketException;
 import java.net.UnknownHostException;
 import java.io.IOException;
 import java.io.BufferedReader;
+import java.util.Objects;
 import java.util.concurrent.*;
 
 
@@ -59,6 +60,9 @@ public class Rfc865UdpServer{
     }
 
     public static void sendReply(String message) throws UnknownHostException, IOException{
+        if (Objects.equals(message, "")){
+            return;
+        }
         byte[] byteEncodedMessage = message.getBytes(); // Encode our quote into byte array
         InetAddress targetAddress = InetAddress.getByName(counterPartyName); // Get the address of whoever sent a request datagram packet to our server
 
