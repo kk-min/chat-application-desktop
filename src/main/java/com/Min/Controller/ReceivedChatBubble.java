@@ -19,10 +19,10 @@ public class ReceivedChatBubble extends ChatBubble{
         this.container.setBackground(background);
         container.setWrapText(true);
         container.setPadding(new Insets(5));
-        this.container.setAlignment(Pos.CENTER_RIGHT);
+        this.container.setAlignment(Pos.CENTER_LEFT);
 
         getChildren().setAll(container);
-        setAlignment(Pos.CENTER_RIGHT);
+        setAlignment(Pos.CENTER_LEFT);
         this.setPadding(new Insets(15,10,0,10));
         AnchorPane.setLeftAnchor(this, 5.0);
     }

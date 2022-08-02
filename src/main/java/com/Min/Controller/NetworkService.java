@@ -29,16 +29,17 @@ public class NetworkService extends Service<String> {
             protected String call() throws Exception {
                 System.out.println("inside call()!");
                 DatagramPacket request = null;
-                try {
-                    request = networkManager.receiveReply();
-                    String receivedReply = new String(request.getData(), 0, request.getLength());
-                    receivedMessage.setValue(receivedReply);
-                    System.out.printf("\nMessage from counterparty: %s\n", receivedReply);
-                    return receivedReply;
-                } catch (IOException e) {
-                    e.printStackTrace();
+                while(true) {
+                    try {
+                        request = networkManager.receiveReply();
+                        String receivedReply = new String(request.getData(), 0, request.getLength());
+                        receivedMessage.setValue(receivedReply);
+                        System.out.printf("\nMessage from counterparty: %s\n", receivedReply);
+                        return receivedReply;
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
-                return null;
             }
         };
     }
