@@ -12,7 +12,7 @@ public class NetworkManager {
     public NetworkManager() throws UnknownHostException {
         myIP = InetAddress.getLocalHost().toString();
         try{
-            clientSocket = new DatagramSocket(11064);
+            clientSocket = new DatagramSocket(18);
             clientSocket.setSoTimeout(10*1000);
         }        catch(SocketException e){
             System.out.println("Failed to create socket!");
@@ -62,7 +62,7 @@ public class NetworkManager {
     public void sendRequest(String message) throws UnknownHostException, IOException{
         byte[] byteEncodedMessage = message.getBytes(); // Encode our message into bytes to put it inside the DatagramPacket
         InetAddress targetAddress = InetAddress.getByName(serverIP); //Get the InetAddress of the server we want to send message to
-        DatagramPacket request = new DatagramPacket(byteEncodedMessage, byteEncodedMessage.length, targetAddress ,18); // Create a send request packet with our message
+        DatagramPacket request = new DatagramPacket(byteEncodedMessage, byteEncodedMessage.length, targetAddress ,17); // Create a send request packet with our message
         this.clientSocket.send(request);
     }
 

@@ -37,7 +37,7 @@ public class Rfc865UdpServer{
 
             while (true){
             //Send UDP reply to client:
-                System.out.println("My IP: "+InetAddress.getLocalHost().toString());
+            //System.out.println("My IP: "+InetAddress.getLocalHost().getHostName());
             System.out.print("\nEnter Message: ");
             String message = null;
             try {
@@ -58,7 +58,7 @@ public class Rfc865UdpServer{
 
     public static void sendReply(String message) throws UnknownHostException, IOException{
         byte[] byteEncodedMessage = message.getBytes(); // Encode our quote into byte array
-        InetAddress targetAddress = InetAddress.getByName("LAPTOP-3LECIJKQ"); // Get the address of whoever sent a request datagram packet to our server
+        InetAddress targetAddress = InetAddress.getByName("localhost"); // Get the address of whoever sent a request datagram packet to our server
 
         DatagramPacket reply = new DatagramPacket(byteEncodedMessage, byteEncodedMessage.length, targetAddress, 18);
         serverSocket.send(reply);
