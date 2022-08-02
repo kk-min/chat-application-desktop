@@ -8,6 +8,9 @@ import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.paint.Color;
 
+/**
+ * Class for creating chat bubbles for sent messages, aligned to the right side of the screen.
+ */
 public class SentChatBubble extends ChatBubble{
 
     public SentChatBubble(String message) {

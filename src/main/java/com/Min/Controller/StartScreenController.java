@@ -13,6 +13,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 
+/**
+ * Controller class for the Start Screen.
+ */
 public class StartScreenController{
     @FXML
     Button connectButton;
@@ -25,6 +28,10 @@ public class StartScreenController{
 
     LoadingScreenController loadingScreenController;
 
+    /**
+     * Initializes the Controller. Binds the Enter Key in the TextField to the Connect button.
+     * @throws Exception
+     */
     @FXML
     public void initialize() throws Exception {
         ipField.setOnKeyPressed(event -> {
@@ -35,6 +42,11 @@ public class StartScreenController{
         );
     }
 
+    /**
+     * Method bound to the Connect button. Changes the Scene to the Loading Screen. (Connection attempt is handled in the Loading Screen.)
+     * @param event
+     * @throws Exception
+     */
     @FXML
     public void handleConnect(ActionEvent event) throws Exception {
         FXMLLoader loadingScreenLoader =
@@ -52,6 +64,10 @@ public class StartScreenController{
         dataModel.setTargetIP(ipField.getText());
     }
 
+    /**
+     * Initializes the DataModel.
+     * @param model Injected DataModel that is used to access the window of the application.
+     */
     public void initModel(DataModel model){
         if (this.dataModel != null) {
             throw new IllegalStateException("Model can only be initialized once");
@@ -60,6 +76,10 @@ public class StartScreenController{
         this.dataModel.setCurrentScene("StartScreen");
     }
 
+    /**
+     * Initializes the NetworkManager.
+     * @param nManager Injected NetworkManager that is used to further inject into the Loading Screen Controller.
+     */
     public void initNetworkManager(NetworkManager nManager){
         if(this.networkManager != null){
             throw new IllegalStateException("Network Manager can only be initialized once");

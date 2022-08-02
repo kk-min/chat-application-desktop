@@ -30,6 +30,11 @@ public class Main extends Application{
         launch(args);
     }
 
+    /**
+     * The entry point into the application. Sets the window title and loads the Start Screen.
+     * @param mainStage The window of the application.
+     * @throws Exception
+     */
     @Override
     public void start(Stage mainStage) throws Exception {
         System.out.println("Start method of Main");

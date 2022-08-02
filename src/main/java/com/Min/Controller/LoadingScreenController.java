@@ -9,12 +9,18 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.concurrent.CompletableFuture;
 
+/**
+ * Controller class for loading screen that is shown while a connection is being attempted.
+ */
 public class LoadingScreenController{
     Stage window;
-    String targetIP;
     DataModel dataModel;
     NetworkManager networkManager;
 
+    /**
+     * Initializes the DataModel.
+     * @param model Injected DataModel that is used to get the window of the application.
+     */
     public void initModel(DataModel model){
         if (this.dataModel != null) {
             throw new IllegalStateException("Model can only be initialized once");
@@ -30,6 +36,9 @@ public class LoadingScreenController{
         });
     }
 
+    /**
+     * Method to start an asynchronous connection attempt; changes the Scene to the Chat Screen/Connection Failed Screen depending on a successful/unsuccessful connection.
+     */
     public void startConnection(){
         System.out.println("Trying to connect...");
 
@@ -76,6 +85,10 @@ public class LoadingScreenController{
         });
     }
 
+    /**
+     * Initializes the NetworkManager.
+     * @param nManager Injected NetworkManager that is used to access network functions.
+     */
     public void initNetworkManager(NetworkManager nManager){
         if(this.networkManager != null){
             throw new IllegalStateException("Network Manager can only be initialized once");

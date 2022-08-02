@@ -7,10 +7,21 @@ import javafx.beans.property.StringProperty;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-
+/**
+ * Model that is used to provide access to data in various controller classes.
+ */
 public class DataModel {
+    /**
+     * IP to connect to.
+     */
     private final StringProperty targetIP = new SimpleStringProperty();
+    /**
+     * Window of the application.
+     */
     private final ObjectProperty<Stage> window = new SimpleObjectProperty<Stage>();
+    /**
+     * String describing the current scene.
+     */
     private final StringProperty currentScene = new SimpleStringProperty();
 
     public StringProperty targetIP() {
