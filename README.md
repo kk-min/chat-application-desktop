@@ -1,4 +1,4 @@
-# Rfc865Udp
+# Simple Chat Program (Desktop)
 _Copyright © 2022 Min Kabar Kyaw_
 
 ## Introduction
