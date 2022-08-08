@@ -14,7 +14,10 @@ If both of these operations are run in the same thread, we will not be able to s
 This application uses Java's **CompletableFuture** library to branch off a thread from the common thread pool to send messages, and uses the **Service** class of JavaFX's concurrency library to make a NetworkService that listens for incoming messages.
 
 ## System Overview
-The application uses the **Model-View-Controller (MVC)** framework. The **View** consists of .fxml files in the resources folder, which specifies the layout of the different components in the JavaFX GUI interface. The **Model** contains data that acts as a single source of truth, which is used by different components in the system (e.g. the targetIP to connect to, as well as the JavaFX stage which is shared by different Views). The **Controllers** handle various UI logic for each View and allow for switching of scenes depending on the user action.
+The application uses the **Model-View-Controller (MVC)** framework.
+- **Model:** Contains data that acts as a single source of truth, which is used by different components in the system (e.g. the target IP to connect to, JavaFX stage/window which is shared by different Views, etc).
+- **View:** Consists of .fxml files in the resources folder, which specifies the layout of the different components in the JavaFX GUI interface.
+- **Controller:** Handle various UI logic for each View and allow for switching of scenes depending on the user action/program states.
 
 ## Application Preview
 <img src=https://user-images.githubusercontent.com/76023265/183324733-5c13926d-b000-45c8-b804-1e0da49c7ee9.jpg width="500"/> <img src=https://user-images.githubusercontent.com/76023265/183324795-429c89cb-8cd6-4fbc-b63e-c398758aaf2d.jpg width="500"/>
