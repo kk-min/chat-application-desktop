@@ -2,7 +2,7 @@
 _Copyright © 2022 Min Kabar Kyaw_
 
 ## Introduction
-A simple chat program to pass messages asynchronously via the User Datagram Protocol (UDP). Both hosts will run this program connect to the other via their IP or hostname.
+A simple chat program to pass messages asynchronously via the User Datagram Protocol (UDP). Both hosts will run this program and connect to the other via their IP or hostname.
 
 ## The need for Asynchronous Programming
 There are two main **I/O Bound** tasks in the program that will **block the program thread**:
