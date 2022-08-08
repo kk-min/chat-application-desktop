@@ -1,4 +1,4 @@
-# Simple Chat Program (Desktop)
+#Min's Simple Chat Application (Desktop)
 _Copyright © 2022 Min Kabar Kyaw_
 
 ## Introduction
