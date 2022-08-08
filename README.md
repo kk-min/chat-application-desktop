@@ -2,13 +2,20 @@
 _Copyright © 2022 Min Kabar Kyaw_
 
 ## Introduction
-A simple chat program to pass messages asynchronously via the User Datagram Protocol (UDP). Both hosts will run this program via their terminal in the same subnet after configuring each other's host names, and they are now ready to send messages to each other.
+A simple chat program to pass messages asynchronously via the User Datagram Protocol (UDP). Both hosts will run this program connect to the other via their IP or hostname.
 
 ## The need for Asynchronous Programming
-There are two main **I/O Bound** tasks in the program that will **block the thread**:
+There are two main **I/O Bound** tasks in the program that will **block the program thread**:
 - **Requesting a message from the remote host**
 - **Getting user input to encapsulate and send to the remote host**
 
 If both of these operations are run in the same thread, we will not be able to send a message until we receive a message, or vice versa. 
 
-This application uses Java's **CompletableFuture** library to branch off a thread from the common thread pool to get messages from the remote host in a loop, and requests user input to send in the main thread in a loop. We are now effectively able to send and receive messages at the same time.
+This application uses Java's **CompletableFuture** library to branch off a thread from the common thread pool to send messages, and uses the **Service** class of JavaFX's concurrency library to make a NetworkService that listens for incoming messages.
+
+## System Overview
+The application uses the **Model-View-Controller (MVC)** framework. The **View** consists of .fxml files in the resources folder, which specifies the layout of the different components in the JavaFX GUI interface. The **Model** contains data that acts as a single source of truth, which is used by different components in the system (e.g. the targetIP to connect to, as well as the JavaFX stage which is shared by different Views). The **Controllers** handle various UI logic for each View and allow for switching of scenes depending on the user action.
+
+## Application Preview
+<img src=https://user-images.githubusercontent.com/76023265/183324733-5c13926d-b000-45c8-b804-1e0da49c7ee9.jpg width="500"/> <img src=https://user-images.githubusercontent.com/76023265/183324795-429c89cb-8cd6-4fbc-b63e-c398758aaf2d.jpg width="500"/>
+<img src=https://user-images.githubusercontent.com/76023265/183324820-a8f1e67c-be1e-418d-9283-822f5b2bbc9a.jpg width="500"/> <img src=https://user-images.githubusercontent.com/76023265/183324833-87e3ef36-4895-48e1-b8b7-8621c08c19ab.jpg width="500"/>
