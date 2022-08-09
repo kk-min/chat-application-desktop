@@ -20,5 +20,5 @@ The application uses the **Model-View-Controller (MVC)** framework.
 - **Controller:** Handle various UI logic for each View and allow for switching of scenes depending on the user action/program states.
 
 ## Application Preview
-<img src=https://user-images.githubusercontent.com/76023265/183324733-5c13926d-b000-45c8-b804-1e0da49c7ee9.jpg width="350"/> <img src=https://user-images.githubusercontent.com/76023265/183324795-429c89cb-8cd6-4fbc-b63e-c398758aaf2d.jpg width="350"/>
-<img src=https://user-images.githubusercontent.com/76023265/183324820-a8f1e67c-be1e-418d-9283-822f5b2bbc9a.jpg width="350"/> <img src=https://user-images.githubusercontent.com/76023265/183324833-87e3ef36-4895-48e1-b8b7-8621c08c19ab.jpg width="350"/>
+<img src=https://user-images.githubusercontent.com/76023265/183324733-5c13926d-b000-45c8-b804-1e0da49c7ee9.jpg width="400"/> <img src=https://user-images.githubusercontent.com/76023265/183324795-429c89cb-8cd6-4fbc-b63e-c398758aaf2d.jpg width="400"/>
+<img src=https://user-images.githubusercontent.com/76023265/183324820-a8f1e67c-be1e-418d-9283-822f5b2bbc9a.jpg width="400"/> <img src=https://user-images.githubusercontent.com/76023265/183324833-87e3ef36-4895-48e1-b8b7-8621c08c19ab.jpg width="400"/>
