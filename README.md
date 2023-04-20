@@ -1,5 +1,5 @@
 # Min's Simple Chat Application (Desktop)
-_Copyright © 2023 Min Kabar Kyaw_
+_Copyright © 2023 kk-min_
 
 ## Introduction
 A simple chat program to pass messages asynchronously via the User Datagram Protocol (UDP). Both hosts will run this program and connect to the other via their IP or hostname.
